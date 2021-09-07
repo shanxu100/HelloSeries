@@ -1,0 +1,58 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+
+ext {
+    // 1. SDK或者Plugin发布时指定的数据
+    localRepo = rootDir.absolutePath + File.separator + 'repo'
+    defaultGroupId = 'org.gsx.helloseries'
+
+    // 2. 对于android项目编译时需要指定的SDK版本号
+    gradlePluginVersion = '3.6.1'
+    buildToolsVersion = '30.0.2'
+    compileSdkVersion = 30
+    minSdkVersion = 24
+    targetSdkVersion = 30
+    ndkVersion = '20.1.5948944'
+
+    // 3. 各个子project依赖的SDK版本号有version.gradle管理
+
+}
+
+buildscript {
+
+    repositories {
+        google()
+        jcenter()
+        maven {
+            url rootDir.absolutePath + File.separator + 'repo'
+        }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.6.1'
+        if (new File(rootDir.absolutePath + File.separator + 'repo' + "/org/gsx/helloseries/hellotransform").exists()) {
+            classpath 'org.gsx.helloseries:hellotransform:1.0.0.100'
+        }
+
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+subprojects {
+    // 对所有的子project进行应用
+
+    // 1. 管理依赖的SDK的版本
+    apply from: rootDir.path + '/version.gradle'
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

@@ -1,0 +1,54 @@
+/**
+ 定义发布publish task
+ <p>
+ 使用说明：
+ <p>
+ 1、定义参数
+ ext{GROUP_ID = 'org.gsx.helloseries'
+ ARTIFACT_ID = 'helloartifactid'
+ VERSION_CODE =  100000100
+ VERSION_NAME = '1.0.0.100'}<p>
+ <p>
+ 2、引入publish.gradle
+ apply from: rootDir.absolutePath + File.separator + "publish.gradle"
+ <p>
+ 3、发布
+ gradlew xxxx:publish
+ */
+
+apply plugin: 'maven-publish'
+
+
+// 1、关闭 module 产物的发布
+// https://docs.gradle.org/current/userguide/publishing_gradle_module_metadata.html
+tasks.withType(GenerateModuleMetadata) {
+    enabled = false
+}
+// 2、publish
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            groupId GROUP_ID
+            artifactId ARTIFACT_ID
+            version VERSION_NAME
+
+            from components.java
+            // https://taccisum.github.io/learn_gradle_5.html
+            pom.withXml {
+                asNode().dependencies.'*'.findAll() {
+                    it.scope.text() == 'runtime' && project.configurations.implementation.allDependencies.find { dep ->
+                        dep.name == it.artifactId.text()
+                    }
+                }.each() {
+                    it.scope*.value = 'compile'
+                }
+            }
+        }
+    }
+
+    repositories {
+        maven {
+            url uri(rootProject.ext.localRepo)
+        }
+    }
+}

@@ -1,0 +1,8 @@
+include ':HelloJvm'
+include ':hellosize'
+include ':HelloJava'
+include ':helloaidl'
+include ':hellorepo'
+include ':hellotransform'
+include ':helloplugin'
+rootProject.name = "HelloSeries"

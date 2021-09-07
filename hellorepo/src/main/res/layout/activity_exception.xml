@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:context=".exception.ExceptionActivity">
+
+    <Button
+            android:id="@+id/btn_init_app_exception_handler"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="initAppExceptionHandler"
+            android:text="init_app_exception_handler" />
+
+    <Button
+            android:id="@+id/btn_init_current_thread_exception_handler"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="initCurrentThreadExceptionHandler"
+            android:text="init_current_thread_exception_handler" />
+
+    <Button
+            android:id="@+id/btn_test_thread_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="testThreadGroup"
+            android:text="test_thread_group" />
+
+    <Button
+            android:id="@+id/btn_trigger_crash"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="triggerCrash"
+            android:text="trigger_crash" />
+
+    <Button
+            android:id="@+id/btn_do_something"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="doSomething"
+            android:text="do_something" />
+
+    <TextView
+            android:id="@+id/tv_do_something_result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="do something result" />
+
+
+</LinearLayout>

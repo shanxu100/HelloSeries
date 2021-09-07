@@ -1,0 +1,24 @@
+/**
+ * 定义各个，模块依赖的sdk版本号，实现统一管理
+ */
+
+ext {
+    Android_Lifecycle_Version = '2.3.0'
+
+    Android_Appcompat_Version = '1.2.0'
+
+    Android_Material_Version = '1.3.0'
+
+    Android_Constraintlayout_Version = '2.0.4'
+
+
+    ANDROIDX = [
+            'appcompat'       : Android_Appcompat_Version,
+            'material'        : Android_Material_Version,
+            'constraintlayout': Android_Constraintlayout_Version,
+            'lifecycle'       : Android_Lifecycle_Version
+    ]
+
+
+}
+

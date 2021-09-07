@@ -1,0 +1,35 @@
+apply plugin: 'java-library'
+
+
+// 防止乱码
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+
+dependencies {
+    implementation gradleApi()
+    implementation localGroovy()
+
+    // gradle 工具
+    implementation 'com.android.tools.build:gradle:' + rootProject.ext.gradlePluginVersion
+
+    // 字节码操作
+    implementation 'org.javassist:javassist:3.26.0-GA'
+}
+
+// 定义发布publish task
+ext {
+    GROUP_ID = rootProject.ext.defaultGroupId
+    ARTIFACT_ID = 'hellotransform'
+    VERSION_CODE = 100000100
+    VERSION_NAME = '1.0.0.100'
+}
+apply from: rootDir.absolutePath + File.separator + "publish.gradle"
+
+

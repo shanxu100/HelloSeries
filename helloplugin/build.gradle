@@ -1,0 +1,18 @@
+apply plugin: 'groovy'
+apply plugin: 'java'
+
+
+dependencies {
+    implementation gradleApi()
+    implementation localGroovy()
+    implementation 'com.android.tools.build:gradle:' + rootProject.ext.gradlePluginVersion
+}
+
+// 定义发布publish task
+ext {
+    GROUP_ID = rootProject.ext.defaultGroupId
+    ARTIFACT_ID = 'helloplugin'
+    VERSION_CODE = 100000100
+    VERSION_NAME = '1.0.0.100'
+}
+apply from: rootDir.path + File.separator + "publish.gradle"
