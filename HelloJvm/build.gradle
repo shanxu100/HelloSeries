@@ -21,7 +21,7 @@ android {
                         "-DANDROID_PIE=ON",
                         "-DANDROID_ARM_MODE=arm",
                         "V=1",
-                        "-DVERSION_NAME=\"${versionName}\""
+                        "-DVERSION_NAME=${versionName}"
             }
         }
         ndk {

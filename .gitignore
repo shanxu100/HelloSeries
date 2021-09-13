@@ -5,6 +5,6 @@
 .DS_Store
 /build
 /captures
-.externalNativeBuildF
+.externalNativeBuild
 .cxx
 /repo

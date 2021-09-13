@@ -7,8 +7,13 @@
 
 #ifdef HELLOJVM_VERSION_NAME
 
-// 使用指定的版本号
-#define HELLOJVM_VERSION_STR "Hello-Jvm " HELLOJVM_VERSION_NAME
+// 1. 使用指定的版本号
+#define HELLOJVM_VERSION_STR "Hello-Jvm " _Expand(HELLOJVM_VERSION_NAME)
+// 2. 将宏展开
+#define _Expand(str) _ToStr(str)
+// 3. 把紧跟着的变量替换为字符串
+#define _ToStr(str) #str
+
 
 #else
 
